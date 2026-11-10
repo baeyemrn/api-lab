@@ -2,6 +2,40 @@
 
 แลป API Testing ด้วย pytest กับ requests วิชา ITDS362 เทสต์ API ของ QuickPizza (https://quickpizza.grafana.com)
 
+## วิธีติดตั้ง
+
+macOS / Linux
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Windows PowerShell
+
+```
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+## วิธีรันเทสต์
+
+```
+pytest -v
+```
+
+ถ้าจะเซฟผลเป็น report
+
+```
+pytest -v --html=report.html --self-contained-html
+```
+
+ผลที่ได้คือ `32 passed, 1 xfailed` ตัวที่ xfail คือ Defect 1 (ตัด tool ออกครบ 3 อันแล้วได้ 500) รายละเอียดอยู่ใน RESULTS.md
+
+ทุกเทสต์ที่ต้องสร้างข้อมูลจะสร้าง user ใหม่ของตัวเอง (fixture `auth` ใน conftest.py) และส่งทุก request ผ่าน session เดียว เพื่อให้ไปเครื่องเดียวกันตลอด
+
 ## Input domain model ของ POST /api/ratings
 
 POST /api/ratings รับ body 2 field คือ `pizza_id` กับ `stars` และต้องมี token ใน header ระบบรับ stars เป็นจำนวนเต็ม 1 ถึง 5 ต้องเป็นพิซซ่าที่มีอยู่จริง และต้องเป็น token ของ user ที่ login แล้ว
