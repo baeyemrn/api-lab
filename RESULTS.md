@@ -23,6 +23,10 @@
 
 ## Part A
 - Step A4, status codes when the other user reads, changes and deletes:
+  - อ่าน (GET): 404 ได้ `{"error":"not found"}`
+  - แก้ (PUT): 400 ได้ `{"error":"rating ID <id> not found"}`
+  - ลบ (DELETE): 400 ได้ `{"error":"rating ID <id> not found"}`
+  - หลังโดนลองทั้ง 3 แบบ เจ้าของยังอ่าน rating ได้ 200 และ stars ยังเป็น 3 เหมือนเดิม
 
 ## Part B
 1.
