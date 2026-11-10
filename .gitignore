@@ -23,3 +23,9 @@ ENV/
 .vscode/
 .idea/
 .DS_Store
+
+
+# Claude
+.claude/
+CLAUDE.md
+CLAUDE.local.md
